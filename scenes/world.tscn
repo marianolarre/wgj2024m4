@@ -1,22 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://wb42qdff2yhn"]
+[gd_scene load_steps=7 format=3 uid="uid://wb42qdff2yhn"]
 
 [ext_resource type="Script" path="res://loopSystem/LoopContainer.gd" id="1_efu0h"]
-[ext_resource type="PackedScene" uid="uid://dk3lnlsd643h4" path="res://hero/hero.tscn" id="1_tbqsb"]
+[ext_resource type="PackedScene" uid="uid://dk3lnlsd643h4" path="res://hero/Hero.tscn" id="1_tbqsb"]
+[ext_resource type="Texture2D" uid="uid://cut5oaqp8uake" path="res://npcs/Goblin.png" id="3_ci5r4"]
 [ext_resource type="PackedScene" uid="uid://ckvb1r2rt2i4s" path="res://interactable/idlePerson.tscn" id="3_m25h3"]
+[ext_resource type="Texture2D" uid="uid://bs3odrwxvulbi" path="res://npcs/Alfio.png" id="4_neb0e"]
+[ext_resource type="PackedScene" uid="uid://cf0g4vstsefeu" path="res://enemies/Enemy.tscn" id="6_40sjp"]
 
 [node name="World" type="Node2D"]
+z_as_relative = false
 y_sort_enabled = true
 
 [node name="Loops" type="Node2D" parent="."]
 
 [node name="Loop1" type="Node2D" parent="Loops"]
-visible = false
 script = ExtResource("1_efu0h")
 loopNumber = 1
 
 [node name="IdlePerson" parent="Loops/Loop1" instance=ExtResource("3_m25h3")]
 position = Vector2(273, 348)
 lines = Array[String](["Hero#Hola!", "Me#Buenas, bienvenido al primer loop", "Hero#God"])
+
+[node name="IdlePerson2" parent="Loops/Loop1" instance=ExtResource("3_m25h3")]
+position = Vector2(743, 171)
+lines = Array[String](["Hero#Hola!", "Me#Buenas, bienvenido al primer loop", "Hero#God"])
+
+[node name="Sprite" parent="Loops/Loop1/IdlePerson2/SpriteTransform" index="0"]
+texture = ExtResource("3_ci5r4")
+
+[node name="IdlePerson3" parent="Loops/Loop1" instance=ExtResource("3_m25h3")]
+position = Vector2(759, 501)
+lines = Array[String](["Hero#Hola!", "Me#Buenas, bienvenido al primer loop", "Hero#God"])
+
+[node name="Sprite" parent="Loops/Loop1/IdlePerson3/SpriteTransform" index="0"]
+texture = ExtResource("4_neb0e")
 
 [node name="Loop2" type="Node2D" parent="Loops"]
 visible = false
@@ -31,4 +48,11 @@ lines = Array[String](["Hero#Te moviste, lol", "Me#Si, es el segundo loop", "Her
 format = 2
 
 [node name="Hero" parent="." instance=ExtResource("1_tbqsb")]
+unique_name_in_owner = true
 position = Vector2(511, 306)
+
+[node name="Enemy" parent="." instance=ExtResource("6_40sjp")]
+position = Vector2(-12, 84)
+
+[editable path="Loops/Loop1/IdlePerson2"]
+[editable path="Loops/Loop1/IdlePerson3"]

@@ -6,4 +6,4 @@ func _ready():
 	if LoopManager.loop == loopNumber:
 		self.show()
 	else:
-		self.hide()
+		self.queue_free()

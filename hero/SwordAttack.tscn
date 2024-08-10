@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://j7go0vw4po6v"]
+
+[ext_resource type="Script" path="res://hero/SwordAttack.gd" id="1_dq4be"]
+[ext_resource type="Texture2D" uid="uid://dg8gi8f3wnc4e" path="res://hero/twirl_03.png" id="1_uuj4a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvwyp"]
+radius = 120.067
+
+[node name="SwordAttack" type="Node2D"]
+script = ExtResource("1_dq4be")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tvwyp")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-54, 0)
+scale = Vector2(0.679688, 0.546875)
+texture = ExtResource("1_uuj4a")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

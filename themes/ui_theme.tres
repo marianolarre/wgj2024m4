@@ -1,8 +1,16 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cobtjnd8j1weq"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cobtjnd8j1weq"]
 
 [ext_resource type="FontFile" uid="uid://br07st0c3ks4i" path="res://themes/HWYGOTH.TTF" id="1_y6c0c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kenf5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_244ks"]
+bg_color = Color(0.93, 0, 0, 1)
 
 [resource]
 default_font = ExtResource("1_y6c0c")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 24
+ProgressBar/styles/background = SubResource("StyleBoxFlat_kenf5")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_244ks")

@@ -1,12 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://dk3lnlsd643h4"]
+[gd_scene load_steps=15 format=3 uid="uid://dk3lnlsd643h4"]
 
-[ext_resource type="Script" path="res://hero/hero.gd" id="1_bl745"]
-[ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_dlev3"]
-[ext_resource type="Texture2D" uid="uid://chvlfno33e1xr" path="res://hero/ChosenOne.png" id="3_gckq7"]
-[ext_resource type="Texture2D" uid="uid://cg21m5n5vpht4" path="res://hero/Espada.png" id="4_3xf4y"]
+[ext_resource type="Script" path="res://hero/Hero.gd" id="1_3hj77"]
+[ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_oh7x4"]
+[ext_resource type="Texture2D" uid="uid://chvlfno33e1xr" path="res://hero/ChosenOne.png" id="3_sty6s"]
+[ext_resource type="Texture2D" uid="uid://cg21m5n5vpht4" path="res://hero/Espada.png" id="4_6g7dg"]
+[ext_resource type="Theme" uid="uid://cobtjnd8j1weq" path="res://themes/ui_theme.tres" id="5_crd5h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rop5"]
 radius = 32.0
+
+[sub_resource type="Animation" id="Animation_jqq3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
 
 [sub_resource type="Animation" id="Animation_8qh6y"]
 resource_name = "idle"
@@ -52,21 +68,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.075, -15.74, -15, -0.025, 0, 0.05, 0, 0, -0.08, -16.395, 0.25, 0),
 "times": PackedFloat32Array(0, 0.1, 0.2)
-}
-
-[sub_resource type="Animation" id="Animation_jqq3w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yf1xf"]
@@ -133,24 +134,38 @@ _data = {
 "attack": SubResource("Animation_y3tyn")
 }
 
+[sub_resource type="GDScript" id="GDScript_f0ats"]
+script/source = "extends CanvasLayer
+
+@onready var health_bar = $HealthBar
+
+func set_hp(hp):
+	health_bar.value = hp
+"
+
 [node name="Hero" type="CharacterBody2D"]
+z_as_relative = false
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_bl745")
+platform_on_leave = 2
+script = ExtResource("1_3hj77")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6rop5")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.156863)
+position = Vector2(0, -21)
 scale = Vector2(0.5, 0.333)
-texture = ExtResource("2_dlev3")
+texture = ExtResource("2_oh7x4")
+offset = Vector2(0, 63.0631)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_gckq7")
+texture = ExtResource("3_sty6s")
 offset = Vector2(0, -119.07)
 hframes = 3
 
@@ -161,6 +176,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="DialogPosition" type="Marker2D" parent="."]
+z_as_relative = false
 position = Vector2(0, -140)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -174,11 +190,31 @@ position = Vector2(0, -45)
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon"]
 z_as_relative = false
-position = Vector2(9, -61)
+position = Vector2(10, -28)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_3xf4y")
+texture = ExtResource("4_6g7dg")
+offset = Vector2(-2, -66)
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Weapon"]
 libraries = {
 "": SubResource("AnimationLibrary_mbltm")
 }
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_f0ats")
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -43.0
+offset_right = 322.0
+offset_bottom = -16.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_crd5h")
+value = 21.96
+metadata/_edit_use_anchors_ = true

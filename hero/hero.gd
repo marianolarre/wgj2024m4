@@ -7,18 +7,26 @@ const JUMP_VELOCITY = -400.0
 @onready var sprite = $Sprite
 @onready var weapon_animation_player = $Weapon/WeaponAnimationPlayer
 @onready var weapon = $Weapon
+@onready var health_bar = %HealthBar
+
+const SWORD_ATTACK = preload("res://hero/SwordAttack.tscn")
+
+var hp: int = 100
 
 var talking = false
 var attack_side = 1
+var direction
+var facing
 
 signal interacted()
 
 
 func _ready():
-	print(LoopManager.loop)
 	DialogManager.started_dialog.connect(_on_started_dialog)
 	DialogManager.finished_dialog.connect(_on_finished_dialog)
 	DialogManager.set_hero(self)
+	facing = Vector2(1, 0)
+	health_bar.value = 100
 
 
 func _on_started_dialog():
@@ -32,8 +40,9 @@ func _on_finished_dialog():
 func _physics_process(delta):
 	if talking:
 		return
-	var direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
+	direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 	if direction:
+		facing = direction.normalized()
 		animation_player.play("move")
 		weapon.rotation = atan2(direction.y, direction.x)
 		if abs(direction.x) > abs(direction.y):
@@ -64,5 +73,13 @@ func _attack():
 	weapon.scale.y = attack_side
 	weapon_animation_player.stop()
 	weapon_animation_player.play("attack")
-	LoopManager.next_loop()
+	var attack = SWORD_ATTACK.instantiate()
+	attack.global_position = global_position + facing*128
+	attack.rotation = atan2(facing.y, facing.x)
+	attack.scale.y = -attack_side
+	get_tree().root.add_child(attack)
 
+
+func hurt(damage):
+	hp -= damage
+	health_bar.value = hp
