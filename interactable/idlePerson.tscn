@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://ckvb1r2rt2i4s"]
 
 [ext_resource type="Script" path="res://interactable/idlePerson.gd" id="1_eu72q"]
-[ext_resource type="Texture2D" uid="uid://cwa4mhjmhgwpd" path="res://hero/placeholder.png" id="1_nhplg"]
 [ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_7xgy8"]
+[ext_resource type="Texture2D" uid="uid://khoe13lx03do" path="res://npcs/Pescador.png" id="2_xnu3p"]
 [ext_resource type="PackedScene" uid="uid://bha6sqsx87kx" path="res://interactable/interactable.tscn" id="3_ugaku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d68y1"]
@@ -78,14 +78,14 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Sprite" type="Sprite2D" parent="SpriteTransform"]
 scale = Vector2(1.055, 0.945)
-texture = ExtResource("1_nhplg")
-offset = Vector2(0, -54)
+texture = ExtResource("2_xnu3p")
+offset = Vector2(0, -115)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.156863)
 show_behind_parent = true
 position = Vector2(0, 2)
-scale = Vector2(0.275, 0.165)
+scale = Vector2(0.5, 0.3)
 texture = ExtResource("2_7xgy8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -97,6 +97,6 @@ autoplay = "idle"
 [node name="Interactable" parent="." instance=ExtResource("3_ugaku")]
 
 [node name="DialogPosition" type="Marker2D" parent="."]
-position = Vector2(0, -58)
+position = Vector2(0, -125)
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
