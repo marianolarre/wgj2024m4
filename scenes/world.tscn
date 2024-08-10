@@ -1,58 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://wb42qdff2yhn"]
+[gd_scene load_steps=8 format=3 uid="uid://wb42qdff2yhn"]
 
 [ext_resource type="Script" path="res://loopSystem/LoopContainer.gd" id="1_efu0h"]
 [ext_resource type="PackedScene" uid="uid://dk3lnlsd643h4" path="res://hero/Hero.tscn" id="1_tbqsb"]
 [ext_resource type="Texture2D" uid="uid://cut5oaqp8uake" path="res://npcs/Goblin.png" id="3_ci5r4"]
 [ext_resource type="PackedScene" uid="uid://ckvb1r2rt2i4s" path="res://interactable/idlePerson.tscn" id="3_m25h3"]
 [ext_resource type="Texture2D" uid="uid://bs3odrwxvulbi" path="res://npcs/Alfio.png" id="4_neb0e"]
-[ext_resource type="PackedScene" uid="uid://cf0g4vstsefeu" path="res://enemies/Enemy.tscn" id="6_40sjp"]
+[ext_resource type="PackedScene" uid="uid://df56tmgj15ssg" path="res://enemies/Spider.tscn" id="6_40sjp"]
+[ext_resource type="PackedScene" uid="uid://1eialai2gh81" path="res://enemies/Ghost.tscn" id="7_fw2ur"]
 
 [node name="World" type="Node2D"]
 z_as_relative = false
 y_sort_enabled = true
 
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
 [node name="Loops" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 1)
 
 [node name="Loop1" type="Node2D" parent="Loops"]
+y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 1
 
 [node name="IdlePerson" parent="Loops/Loop1" instance=ExtResource("3_m25h3")]
-position = Vector2(273, 348)
-lines = Array[String](["Hero#Hola!", "Me#Buenas, bienvenido al primer loop", "Hero#God"])
+position = Vector2(273, 347)
+text = "Yo#Soy un pescador jeje
+Heroe#Tenes algun pez?
+Yo#No
+Yo#Sadge"
 
 [node name="IdlePerson2" parent="Loops/Loop1" instance=ExtResource("3_m25h3")]
 position = Vector2(743, 171)
-lines = Array[String](["Hero#Hola!", "Me#Buenas, bienvenido al primer loop", "Hero#God"])
+text = "Yo#Soy una orco
+Heroe#Cool"
 
 [node name="Sprite" parent="Loops/Loop1/IdlePerson2/SpriteTransform" index="0"]
 texture = ExtResource("3_ci5r4")
 
 [node name="IdlePerson3" parent="Loops/Loop1" instance=ExtResource("3_m25h3")]
 position = Vector2(759, 501)
-lines = Array[String](["Hero#Hola!", "Me#Buenas, bienvenido al primer loop", "Hero#God"])
+text = "Yo#En mi epoca la magia era otra
+Dev#Callate, lol"
 
 [node name="Sprite" parent="Loops/Loop1/IdlePerson3/SpriteTransform" index="0"]
 texture = ExtResource("4_neb0e")
 
 [node name="Loop2" type="Node2D" parent="Loops"]
 visible = false
+y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 2
 
 [node name="IdlePerson" parent="Loops/Loop2" instance=ExtResource("3_m25h3")]
 position = Vector2(702, 350)
-lines = Array[String](["Hero#Te moviste, lol", "Me#Si, es el segundo loop", "Hero#Mira que loco che"])
-
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
 
 [node name="Hero" parent="." instance=ExtResource("1_tbqsb")]
 unique_name_in_owner = true
 position = Vector2(511, 306)
 
 [node name="Enemy" parent="." instance=ExtResource("6_40sjp")]
-position = Vector2(-12, 84)
+position = Vector2(-501, 127)
+
+[node name="Enemy2" parent="." instance=ExtResource("7_fw2ur")]
+position = Vector2(-543, 870)
+
+[node name="Enemy3" parent="." instance=ExtResource("7_fw2ur")]
+position = Vector2(-417, 918)
+
+[node name="Enemy4" parent="." instance=ExtResource("7_fw2ur")]
+position = Vector2(-537, 984)
 
 [editable path="Loops/Loop1/IdlePerson2"]
 [editable path="Loops/Loop1/IdlePerson3"]

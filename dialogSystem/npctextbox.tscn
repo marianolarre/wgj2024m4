@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf4t50q28slgv"]
+
+[ext_resource type="PackedScene" uid="uid://bi0acvn8jdy5u" path="res://dialogSystem/textbox.tscn" id="1_4ak4w"]
+
+[node name="Textbox" instance=ExtResource("1_4ak4w")]
+
+[node name="NinePatchRect" parent="." index="0"]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Label" parent="MarginContainer" index="0"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="NextIndicator" parent="MarginContainer/Label" index="0"]
+modulate = Color(1, 1, 1, 1)

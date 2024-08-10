@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bi0acvn8jdy5u"]
 
 [ext_resource type="Script" path="res://dialogSystem/textbox.gd" id="1_g76at"]
-[ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_316ro"]
 [ext_resource type="Texture2D" uid="uid://c3dh61wpb0adq" path="res://dialogbubble.png" id="2_e3rwr"]
 [ext_resource type="Theme" uid="uid://cobtjnd8j1weq" path="res://themes/ui_theme.tres" id="2_lxe6l"]
 [ext_resource type="AudioStream" uid="uid://drgmjre43m762" path="res://audio/tick_002.ogg" id="4_kj6kg"]
+[ext_resource type="Texture2D" uid="uid://d0o71ujtgupkl" path="res://dialogSystem/next.png" id="4_um5ww"]
 
 [node name="Textbox" type="MarginContainer"]
 anchors_preset = 7
@@ -58,7 +58,7 @@ grow_vertical = 0
 scale = Vector2(0.13, 0.13)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("2_316ro")
+texture = ExtResource("4_um5ww")
 
 [node name="LetterDisplayTimer" type="Timer" parent="."]
 one_shot = true

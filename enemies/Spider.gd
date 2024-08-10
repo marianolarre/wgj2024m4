@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
-@export var speed: float = 64
+@export var speed: float = 128
 @export var damage: int = 5
 @onready var stun_timer = $StunTimer
 @onready var hurt_timer = $HurtTimer
 @onready var sprite = $SpriteTransform/Sprite
-@export var movement_animation: String = "walk"
 
 var hitting = false
 const IDLE = 0
@@ -15,6 +14,13 @@ var stunned = false
 var state = 0
 var hp:int = 100
 var flash_tween
+var random_offset
+var direction
+
+
+func _ready():
+	random_offset = randf_range(0.0, 1.0)
+
 
 func _physics_process(delta):
 	if stunned:
@@ -22,10 +28,18 @@ func _physics_process(delta):
 	elif state == IDLE:
 		animation_player.play("idle")
 	elif state == CHASING:
-		animation_player.play(movement_animation)
-		var direction = (%Hero.global_position-global_position).normalized()
-		sprite.flip_h = direction.x < 0
-		velocity = lerp(velocity, direction*speed, 0.2)
+		var modulated_speed = 0
+		var time_seconds = Time.get_ticks_usec() / 1000000.0
+		if fmod(time_seconds+random_offset, 1) > 0.4:
+			modulated_speed = speed
+			animation_player.play("walk")
+		else:
+			animation_player.play("RESET")
+			direction = (%Hero.global_position-global_position).normalized()
+		if direction == null:
+			direction = (%Hero.global_position-global_position).normalized()
+		sprite.flip_h = direction.x > 0
+		velocity = lerp(velocity, direction*modulated_speed, 0.4)
 	move_and_slide()
 
 
@@ -68,6 +82,7 @@ func _on_hurt_timer_timeout():
 
 
 func _hurt_hero():
+	print(stunned)
 	if not stunned:
 		%Hero.hurt(damage)
 		hurt_timer.start()

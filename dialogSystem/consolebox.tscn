@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://drng8yefn6lh3"]
+
+[ext_resource type="Script" path="res://dialogSystem/consolebox.gd" id="1_16n63"]
+[ext_resource type="Texture2D" uid="uid://c3dh61wpb0adq" path="res://dialogbubble.png" id="2_1vgrw"]
+[ext_resource type="Theme" uid="uid://btdf73ri82vel" path="res://themes/console.tres" id="3_yb3es"]
+[ext_resource type="Texture2D" uid="uid://d0o71ujtgupkl" path="res://dialogSystem/next.png" id="4_77w7v"]
+[ext_resource type="AudioStream" uid="uid://drgmjre43m762" path="res://audio/tick_002.ogg" id="5_en7wb"]
+[ext_resource type="AudioStream" uid="uid://cja68d384pm82" path="res://audio/Consola inicio.mp3" id="6_6fw78"]
+
+[node name="Textbox" type="CanvasLayer"]
+script = ExtResource("1_16n63")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 0.470588)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_1vgrw")
+patch_margin_left = 18
+patch_margin_top = 20
+patch_margin_right = 18
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 13.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme = ExtResource("3_yb3es")
+
+[node name="NextIndicator" type="TextureRect" parent="NinePatchRect/Label"]
+self_modulate = Color(0.160784, 1, 0.313726, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -20.0
+offset_right = 105.0
+offset_bottom = 108.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.13, 0.13)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("4_77w7v")
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EndTimer" type="Timer" parent="."]
+
+[node name="LetterSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_en7wb")
+
+[node name="MessageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_6fw78")
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]

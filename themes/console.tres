@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://btdf73ri82vel"]
+
+[ext_resource type="FontFile" uid="uid://br07st0c3ks4i" path="res://themes/HWYGOTH.TTF" id="1_i0w5o"]
+
+[sub_resource type="FontVariation" id="FontVariation_xtbic"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kenf5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_244ks"]
+bg_color = Color(0.93, 0, 0, 1)
+
+[resource]
+default_font = ExtResource("1_i0w5o")
+Label/colors/font_color = Color(0.160784, 1, 0.313726, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = SubResource("FontVariation_xtbic")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_kenf5")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_244ks")

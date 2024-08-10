@@ -8,10 +8,13 @@ const JUMP_VELOCITY = -400.0
 @onready var weapon_animation_player = $Weapon/WeaponAnimationPlayer
 @onready var weapon = $Weapon
 @onready var health_bar = %HealthBar
+@onready var death_timer = $Death
+@onready var ui = %UI
 
 const SWORD_ATTACK = preload("res://hero/SwordAttack.tscn")
 
 var hp: int = 100
+var dying = false
 
 var talking = false
 var attack_side = 1
@@ -26,11 +29,13 @@ func _ready():
 	DialogManager.finished_dialog.connect(_on_finished_dialog)
 	DialogManager.set_hero(self)
 	facing = Vector2(1, 0)
-	health_bar.value = 100
+	ui.set_hp(100)
+	ui.fade_in()
 
 
 func _on_started_dialog():
 	talking = true
+	animation_player.play("idle")
 
 
 func _on_finished_dialog():
@@ -38,7 +43,7 @@ func _on_finished_dialog():
 
 
 func _physics_process(delta):
-	if talking:
+	if talking or dying:
 		return
 	direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 	if direction:
@@ -62,10 +67,13 @@ func _physics_process(delta):
 
 
 func _unhandled_input(event):
+	if dying:
+		return
 	if event.is_action_pressed("interact"):
 		interacted.emit()
 	if event.is_action_pressed("attack"):
-		_attack()
+		if not talking:
+			_attack()
 
 
 func _attack():
@@ -81,5 +89,15 @@ func _attack():
 
 
 func hurt(damage):
-	hp -= damage
-	health_bar.value = hp
+	hp -= clamp(damage, 0, 100)
+	ui.set_hp(hp)
+	if hp <= 0 and not dying:
+		animation_player.stop()
+		animation_player.play("death")
+		sprite.frame = 3
+		dying = true
+		death_timer.start()
+
+
+func _on_death_timeout():
+	ui.fade_out(LoopManager.repeat_loop)

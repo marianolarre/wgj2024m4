@@ -67,6 +67,7 @@ _data = {
 }
 
 [node name="IdlePerson" type="StaticBody2D"]
+y_sort_enabled = true
 scale = Vector2(1.064, 1)
 script = ExtResource("1_eu72q")
 
@@ -84,9 +85,10 @@ offset = Vector2(0, -115)
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.156863)
 show_behind_parent = true
-position = Vector2(0, 2)
+position = Vector2(0, -17)
 scale = Vector2(0.5, 0.3)
 texture = ExtResource("2_7xgy8")
+offset = Vector2(0, 63.3333)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

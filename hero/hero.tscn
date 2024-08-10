@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dk3lnlsd643h4"]
+[gd_scene load_steps=16 format=3 uid="uid://dk3lnlsd643h4"]
 
 [ext_resource type="Script" path="res://hero/Hero.gd" id="1_3hj77"]
 [ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_oh7x4"]
 [ext_resource type="Texture2D" uid="uid://chvlfno33e1xr" path="res://hero/ChosenOne.png" id="3_sty6s"]
 [ext_resource type="Texture2D" uid="uid://cg21m5n5vpht4" path="res://hero/Espada.png" id="4_6g7dg"]
 [ext_resource type="Theme" uid="uid://cobtjnd8j1weq" path="res://themes/ui_theme.tres" id="5_crd5h"]
+[ext_resource type="Script" path="res://hero/UI.tres.gd" id="5_gfm2h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rop5"]
 radius = 32.0
@@ -22,6 +23,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l2seh"]
+resource_name = "death"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 2.63902, 68.5934),
+"update": 0,
+"values": [0.0, -0.270526, 0.0, 1.5708]
 }
 
 [sub_resource type="Animation" id="Animation_8qh6y"]
@@ -73,6 +102,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yf1xf"]
 _data = {
 "RESET": SubResource("Animation_jqq3w"),
+"death": SubResource("Animation_l2seh"),
 "idle": SubResource("Animation_8qh6y"),
 "move": SubResource("Animation_basg3")
 }
@@ -134,15 +164,6 @@ _data = {
 "attack": SubResource("Animation_y3tyn")
 }
 
-[sub_resource type="GDScript" id="GDScript_f0ats"]
-script/source = "extends CanvasLayer
-
-@onready var health_bar = $HealthBar
-
-func set_hp(hp):
-	health_bar.value = hp
-"
-
 [node name="Hero" type="CharacterBody2D"]
 z_as_relative = false
 y_sort_enabled = true
@@ -167,7 +188,7 @@ y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_sty6s")
 offset = Vector2(0, -119.07)
-hframes = 3
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 libraries = {
@@ -201,20 +222,29 @@ libraries = {
 }
 
 [node name="UI" type="CanvasLayer" parent="."]
-script = SubResource("GDScript_f0ats")
+unique_name_in_owner = true
+script = ExtResource("5_gfm2h")
 
 [node name="HealthBar" type="ProgressBar" parent="UI"]
-unique_name_in_owner = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -43.0
-offset_right = 322.0
-offset_bottom = -16.0
-grow_vertical = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 332.0
+offset_bottom = 52.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("5_crd5h")
 value = 21.96
-metadata/_edit_use_anchors_ = true
+
+[node name="FadeToBlack" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1248, 0.13712, 0.16, 1)
+
+[node name="Death" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Death" to="." method="_on_death_timeout"]
