@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckvb1r2rt2i4s"]
+
+[ext_resource type="Script" path="res://interactable/idlePerson.gd" id="1_eu72q"]
+[ext_resource type="Texture2D" uid="uid://cwa4mhjmhgwpd" path="res://hero/placeholder.png" id="1_nhplg"]
+[ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_7xgy8"]
+[ext_resource type="PackedScene" uid="uid://bha6sqsx87kx" path="res://interactable/interactable.tscn" id="3_ugaku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d68y1"]
+size = Vector2(60, 60)
+
+[sub_resource type="Animation" id="Animation_4321l"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteTransform/Sprite:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.055, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteTransform/Sprite:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.945, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_d58c0"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteTransform/Sprite:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.055, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteTransform/Sprite:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.945, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7id2l"]
+_data = {
+"RESET": SubResource("Animation_4321l"),
+"idle": SubResource("Animation_d58c0")
+}
+
+[node name="IdlePerson" type="StaticBody2D"]
+scale = Vector2(1.064, 1)
+script = ExtResource("1_eu72q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d68y1")
+
+[node name="SpriteTransform" type="Marker2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="SpriteTransform"]
+scale = Vector2(1.055, 0.945)
+texture = ExtResource("1_nhplg")
+offset = Vector2(0, -54)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.156863)
+show_behind_parent = true
+position = Vector2(0, 2)
+scale = Vector2(0.275, 0.165)
+texture = ExtResource("2_7xgy8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7id2l")
+}
+autoplay = "idle"
+
+[node name="Interactable" parent="." instance=ExtResource("3_ugaku")]
+
+[node name="DialogPosition" type="Marker2D" parent="."]
+position = Vector2(0, -58)
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

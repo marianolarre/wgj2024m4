@@ -1,25 +1,20 @@
-extends CharacterBody2D
+class_name Hero extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var dialog_position = $DialogPosition
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var animation_player = $Sprite/AnimationPlayer
+@onready var sprite = $Sprite
 
 var talking = false
 
-const test_lines: Array[String] = [
-	"Hola!",
-	"Esto es una prueba de texto.",
-	"Frena en los puntos. Tambien en las comas, mira.",
-	"Hohooo ho"
-]
+signal interacted()
 
 
 func _ready():
 	DialogManager.started_dialog.connect(_on_started_dialog)
 	DialogManager.finished_dialog.connect(_on_finished_dialog)
+	DialogManager.set_hero(self)
 
 
 func _on_started_dialog():
@@ -34,6 +29,12 @@ func _physics_process(delta):
 	if talking:
 		return
 	var direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
+	if direction:
+		animation_player.play("move")
+		if direction.x != 0:
+			sprite.flip_h = sign(direction.x) == -1
+	else:
+		animation_player.play("idle")
 	direction = direction.normalized()
 	velocity = direction * SPEED
 	move_and_slide()
@@ -41,5 +42,4 @@ func _physics_process(delta):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
-		DialogManager.start_dialog(dialog_position.global_position, test_lines)
-		talking = true
+		interacted.emit()

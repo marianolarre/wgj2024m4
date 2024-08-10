@@ -10,28 +10,40 @@ var text_box_position: Vector2
 
 var is_dialog_active = false
 var can_advance_line = false
+var speaker: Node2D
+var hero: Hero
 
 signal started_dialog()
 signal finished_dialog()
 
-func start_dialog(position: Vector2, lines: Array[String]):
+func start_dialog(new_speaker: Node2D, lines: Array[String]):
 	if is_dialog_active:
 		return
 	
+	speaker = new_speaker
 	dialog_lines = lines
-	text_box_position = position
 	_show_text_box()
 	
 	is_dialog_active = true
 	started_dialog.emit()
 
 
+func set_hero(new_hero: Hero):
+	hero = new_hero
+
+
 func _show_text_box():
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
 	get_tree().root.add_child(text_box)
-	text_box.global_position = text_box_position+Vector2(-16, -32) # Numeros magicos!
-	text_box.display_text(dialog_lines[current_line_index])
+	var split = dialog_lines[current_line_index].split("#")
+	var speaker_name = split[0]
+	if speaker_name == "Me":
+		text_box_position = speaker.get_node("DialogPosition").global_position
+	elif speaker_name == "Hero":
+		text_box_position = hero.get_node("DialogPosition").global_position
+	text_box.global_position = text_box_position+Vector2(-16, -64) # Numeros magicos!
+	text_box.display_text(split[1])
 	can_advance_line = false
 
 

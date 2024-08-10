@@ -1,20 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk3lnlsd643h4"]
+[gd_scene load_steps=8 format=3 uid="uid://dk3lnlsd643h4"]
 
-[ext_resource type="Texture2D" uid="uid://b61qj4ptlsmln" path="res://icon.svg" id="1_1fh1w"]
 [ext_resource type="Script" path="res://hero/hero.gd" id="1_bl745"]
+[ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_dlev3"]
+[ext_resource type="Texture2D" uid="uid://cwa4mhjmhgwpd" path="res://hero/placeholder.png" id="2_xgvnv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rop5"]
-radius = 32.0
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_8qh6y"]
+resource_name = "idle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_basg3"]
+resource_name = "move"
+length = 0.2
+loop_mode = 1
+step = 0.01
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.075, -15.74, -15, -0.025, 0, 0.05, 0, 0, -0.08, -16.395, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yf1xf"]
+_data = {
+"idle": SubResource("Animation_8qh6y"),
+"move": SubResource("Animation_basg3")
+}
 
 [node name="Hero" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_bl745")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6rop5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.156863)
+scale = Vector2(0.3, 0.2)
+texture = ExtResource("2_dlev3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_1fh1w")
+texture = ExtResource("2_xgvnv")
+offset = Vector2(0, -54.885)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_yf1xf")
+}
+autoplay = "idle"
 
 [node name="DialogPosition" type="Marker2D" parent="."]
 position = Vector2(0, -58)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
