@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dk3lnlsd643h4"]
+[gd_scene load_steps=25 format=3 uid="uid://dk3lnlsd643h4"]
 
 [ext_resource type="Script" path="res://hero/Hero.gd" id="1_3hj77"]
 [ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_oh7x4"]
@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://cg21m5n5vpht4" path="res://hero/Espada.png" id="4_6g7dg"]
 [ext_resource type="Theme" uid="uid://cobtjnd8j1weq" path="res://themes/ui_theme.tres" id="5_crd5h"]
 [ext_resource type="Script" path="res://hero/UI.tres.gd" id="5_gfm2h"]
+[ext_resource type="Texture2D" uid="uid://cp7sx0hyep1vd" path="res://UI/450_1000.jpg" id="7_6rlnt"]
 [ext_resource type="AudioStream" uid="uid://bqt52j376gyog" path="res://audio/SwordWoosh.ogg" id="7_8detm"]
 [ext_resource type="AudioStream" uid="uid://blm51tvwi1j4y" path="res://audio/golpe.ogg" id="8_nhl54"]
 [ext_resource type="AudioStream" uid="uid://cw4anbxosrekx" path="res://audio/pisada1.ogg" id="9_3f1gm"]
+[ext_resource type="AudioStream" uid="uid://dg0a6smefub0k" path="res://audio/adventure1g.mp3" id="9_m65ey"]
 [ext_resource type="AudioStream" uid="uid://ccyb0fwq4fxyp" path="res://audio/pisada2.ogg" id="10_tpmgl"]
 [ext_resource type="AudioStream" uid="uid://fk7w7hybcuqa" path="res://audio/pisada3.ogg" id="11_cwras"]
 [ext_resource type="AudioStream" uid="uid://bd2a0fcf2ne17" path="res://audio/pisada4.ogg" id="12_83b06"]
@@ -267,6 +269,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.1248, 0.13712, 0.16, 1)
 
 [node name="DamageOverlay" type="ColorRect" parent="UI"]
@@ -276,6 +279,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.25, 0.075, 0, 0)
 
 [node name="HealthBarContainer" type="Panel" parent="UI"]
@@ -283,6 +287,7 @@ offset_left = 20.0
 offset_top = 18.0
 offset_right = 433.0
 offset_bottom = 58.0
+mouse_filter = 2
 
 [node name="HealthBar" type="ProgressBar" parent="UI/HealthBarContainer"]
 layout_mode = 1
@@ -297,9 +302,19 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("5_crd5h")
 theme_override_font_sizes/font_size = 26
 value = 21.96
+
+[node name="PantallaAzul" type="TextureRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_6rlnt")
 
 [node name="Death" type="Timer" parent="."]
 wait_time = 2.0
@@ -316,6 +331,10 @@ stream = ExtResource("7_8detm")
 
 [node name="AudioHurt" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("8_nhl54")
+
+[node name="Musica" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("9_m65ey")
+autoplay = true
 
 [node name="Pisadas" type="Node2D" parent="Audio"]
 

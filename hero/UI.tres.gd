@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var health_bar = $HealthBarContainer/HealthBar
 @onready var fade_to_black = $FadeToBlack
 @onready var damage_overlay = $DamageOverlay
+@onready var pantalla_azul = $PantallaAzul
 
 
 func _ready():
@@ -28,3 +29,7 @@ func hurt_overlay():
 	damage_overlay.color = Color.from_string("#ff000040", Color.RED)
 	var tween = get_tree().create_tween()
 	tween.tween_property(damage_overlay, "color", Color.from_string("#ff000000", Color.TRANSPARENT), 0.2)
+
+
+func blue_screen():
+	pantalla_azul.show()

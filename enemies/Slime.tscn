@@ -6,6 +6,8 @@
 
 [node name="Slime" instance=ExtResource("1_awcgx")]
 script = ExtResource("2_hqgag")
+shooting_speed = 300
+spread = 0
 speed = 120.0
 knockback_multiplier = 1.5
 hp = 30

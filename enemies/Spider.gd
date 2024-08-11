@@ -5,11 +5,13 @@ var direction
 
 func _ready():
 	random_offset = randf_range(0.0, 1.0)
+	DialogManager.started_dialog.connect(_cortesia_start)
+	DialogManager.finished_dialog.connect(_cortesia_end)
 
 func _physics_process(_delta):
 	if stunned:
 		velocity = velocity*0.95
-	elif state == IDLE:
+	elif state == IDLE or esperando:
 		animation_player.play("idle")
 	elif state == CHASING:
 		var modulated_speed = 0

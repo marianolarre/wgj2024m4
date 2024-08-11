@@ -101,4 +101,6 @@ autoplay = "idle"
 [node name="DialogPosition" type="Marker2D" parent="."]
 position = Vector2(0, -125)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

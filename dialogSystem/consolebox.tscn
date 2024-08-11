@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cja68d384pm82" path="res://audio/Consola inicio.mp3" id="6_6fw78"]
 
 [node name="Textbox" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_16n63")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -37,6 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
 theme = ExtResource("3_yb3es")
+autowrap_mode = 2
 
 [node name="NextIndicator" type="TextureRect" parent="NinePatchRect/Label"]
 self_modulate = Color(0.160784, 1, 0.313726, 1)
@@ -64,9 +66,15 @@ one_shot = true
 
 [node name="LetterSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_en7wb")
+max_distance = 2e+06
+attenuation = 1e-05
+panning_strength = 0.0
 
 [node name="MessageSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_6fw78")
+max_distance = 2e+06
+attenuation = 1e-05
+panning_strength = 0.0
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]

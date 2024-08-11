@@ -3,6 +3,8 @@ class_name LoopContainer extends Node2D
 @export var loopNumber: int
 @export_enum("=", ">=", "<=", "!=", "()", ")(") var condition
 @export var loopNumberRange: int
+@onready var spawnpoint = $"Spawnpoint"
+@export var deathIsScripted: bool
 
 func _ready():
 	if condition == 0 and LoopManager.loop == loopNumber:
@@ -19,3 +21,8 @@ func _ready():
 		self.show()
 	else:
 		self.queue_free()
+		return
+	if spawnpoint:
+		%Hero.global_position = spawnpoint.global_position
+	if deathIsScripted:
+		LoopManager.next_death_loops()

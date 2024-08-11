@@ -18,11 +18,25 @@ var stunned = false
 var state = 0
 @export var hp:int = 40
 var flash_tween
+var esperando = false
+
+func _ready():
+	DialogManager.started_dialog.connect(_cortesia_start)
+	DialogManager.finished_dialog.connect(_cortesia_end)
+
+
+func _cortesia_start():
+	esperando = true
+	velocity = Vector2(0,0)
+
+func _cortesia_end():
+	esperando = false
+
 
 func _physics_process(_delta):
 	if stunned:
 		velocity = velocity*0.95
-	elif state == IDLE:
+	elif state == IDLE or esperando:
 		animation_player.play("idle")
 	elif state == CHASING:
 		animation_player.play(movement_animation)
@@ -74,6 +88,6 @@ func _on_hurt_timer_timeout():
 
 
 func _hurt_hero():
-	if not stunned:
+	if not stunned and not esperando:
 		%Hero.hurt(damage)
 		hurt_timer.start()

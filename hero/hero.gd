@@ -1,7 +1,6 @@
 class_name Hero extends CharacterBody2D
 
-const SPEED = 350.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 450.0
 @onready var dialog_position = $DialogPosition
 @onready var animation_player = $Sprite/AnimationPlayer
 @onready var sprite = $Sprite
@@ -27,6 +26,8 @@ var attacking = false
 var direction
 var facing
 
+var has_sword = false
+
 signal interacted()
 
 
@@ -37,6 +38,12 @@ func _ready():
 	facing = Vector2(1, 0)
 	ui.set_hp(100)
 	ui.fade_in()
+	weapon.hide()
+
+
+func grab_sword():
+	has_sword = true
+	weapon.show()
 
 
 func _on_started_dialog():
@@ -80,9 +87,13 @@ func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
 		if not talking:
 			_attack()
+	if event.is_action_pressed("skip"):
+		LoopManager.next_loop()
 
 
 func _attack():
+	if not has_sword:
+		return
 	if attack_timer.time_left > 0:
 		buffered_attack = true
 	else:
@@ -101,7 +112,7 @@ func _attack():
 
 
 func hurt(damage):
-	if not dying:
+	if not dying and not talking:
 		hp -= clamp(damage, 0, 100)
 		ui.set_hp(hp)
 		ui.hurt_overlay()
@@ -149,3 +160,8 @@ func _finish_teleport():
 	global_position = target_teleport_position
 	$Camera2D.reset_smoothing()
 	ui.fade_in()
+
+
+func blue_screen():
+	ui.blue_screen()
+	talking = true
