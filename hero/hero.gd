@@ -1,13 +1,12 @@
 class_name Hero extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 350.0
 const JUMP_VELOCITY = -400.0
 @onready var dialog_position = $DialogPosition
 @onready var animation_player = $Sprite/AnimationPlayer
 @onready var sprite = $Sprite
 @onready var weapon_animation_player = $Weapon/WeaponAnimationPlayer
 @onready var weapon = $Weapon
-@onready var health_bar = %HealthBar
 @onready var death_timer = $Death
 @onready var ui = %UI
 
@@ -16,6 +15,7 @@ const SWORD_ATTACK = preload("res://hero/SwordAttack.tscn")
 var hp: int = 100
 var dying = false
 
+var flash_tween
 var talking = false
 var attack_side = 1
 var direction
@@ -89,14 +89,22 @@ func _attack():
 
 
 func hurt(damage):
-	hp -= clamp(damage, 0, 100)
-	ui.set_hp(hp)
-	if hp <= 0 and not dying:
-		animation_player.stop()
-		animation_player.play("death")
-		sprite.frame = 3
-		dying = true
-		death_timer.start()
+	if not dying:
+		hp -= clamp(damage, 0, 100)
+		ui.set_hp(hp)
+		ui.hurt_overlay()
+		if flash_tween != null:
+			flash_tween.kill()
+		flash_tween = get_tree().create_tween()
+		sprite.self_modulate = Color.RED*10
+		flash_tween.tween_property(sprite, "self_modulate", Color.WHITE, 0.2)
+		if hp <= 0 and not dying:
+			weapon.hide()
+			animation_player.stop()
+			animation_player.play("death")
+			sprite.frame = 3
+			dying = true
+			death_timer.start()
 
 
 func _on_death_timeout():

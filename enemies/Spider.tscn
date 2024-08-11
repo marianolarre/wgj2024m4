@@ -1,8 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://df56tmgj15ssg"]
+[gd_scene load_steps=15 format=3 uid="uid://df56tmgj15ssg"]
 
 [ext_resource type="Script" path="res://enemies/Spider.gd" id="1_cgbu6"]
 [ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_fesmu"]
 [ext_resource type="Texture2D" uid="uid://bwtoprrjqqqnt" path="res://enemies/Arana.png" id="2_ls287"]
+[ext_resource type="Texture2D" uid="uid://c0fbw3qndr3ux" path="res://enemies/trace_06.png" id="3_va2av"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6ua5c"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_dl0uc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sanha"]
 radius = 31.0644
@@ -145,6 +152,28 @@ scale = Vector2(0.5, 0.5)
 [node name="Sprite" type="Sprite2D" parent="SpriteTransform"]
 texture = ExtResource("2_ls287")
 offset = Vector2(0, -115)
+
+[node name="DeathParticles" type="CPUParticles2D" parent="SpriteTransform/Sprite"]
+z_index = 1
+material = SubResource("CanvasItemMaterial_6ua5c")
+position = Vector2(0, -28)
+scale = Vector2(2, 2)
+emitting = false
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_va2av")
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+damping_min = 1000.0
+damping_max = 1000.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_dl0uc")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.156863)

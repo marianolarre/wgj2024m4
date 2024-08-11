@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bha6sqsx87kx"]
 
 [ext_resource type="Script" path="res://interactable/interactable.gd" id="1_ndckh"]
-[ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="1_x6xu1"]
+[ext_resource type="Texture2D" uid="uid://djojalyouunen" path="res://UI/indicator.png" id="2_mey2r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36t5r"]
 radius = 82.52
@@ -128,7 +128,7 @@ scale = Vector2(0.3, 0.3)
 [node name="Sprite2D" type="Sprite2D" parent="InteractIndicator/IndicatorTransform"]
 position = Vector2(0, 9.725)
 scale = Vector2(1.13, 0.895)
-texture = ExtResource("1_x6xu1")
+texture = ExtResource("2_mey2r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InteractIndicator"]
 libraries = {

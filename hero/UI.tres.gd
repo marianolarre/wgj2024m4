@@ -1,7 +1,12 @@
 extends CanvasLayer
 
-@onready var health_bar = $HealthBar
+@onready var health_bar = $HealthBarContainer/HealthBar
 @onready var fade_to_black = $FadeToBlack
+@onready var damage_overlay = $DamageOverlay
+
+
+func _ready():
+	show()
 
 func set_hp(hp):
 	health_bar.value = hp
@@ -16,3 +21,8 @@ func fade_out(callback):
 	var tween = get_tree().create_tween()
 	tween.tween_property(fade_to_black, "color", Color.from_string("#202329", Color.BLACK), 1)
 	tween.tween_callback(callback).set_delay(1)
+
+func hurt_overlay():
+	damage_overlay.color = Color.from_string("#ff000040", Color.RED)
+	var tween = get_tree().create_tween()
+	tween.tween_property(damage_overlay, "color", Color.from_string("#ff000000", Color.TRANSPARENT), 0.2)

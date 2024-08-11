@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
 @export var speed: float = 64
@@ -7,13 +7,15 @@ extends CharacterBody2D
 @onready var hurt_timer = $HurtTimer
 @onready var sprite = $SpriteTransform/Sprite
 @export var movement_animation: String = "walk"
+@onready var death_particles = $SpriteTransform/Sprite/DeathParticles
+@onready var death_vfx = preload("res://enemies/DeathVFX.tscn")
 
 var hitting = false
 const IDLE = 0
 const CHASING = 1
 var stunned = false
 var state = 0
-var hp:int = 100
+var hp:int = 40
 var flash_tween
 
 func _physics_process(delta):
@@ -54,7 +56,11 @@ func hurt(damage, knockback):
 	flash_tween = get_tree().create_tween()
 	sprite.self_modulate = Color.WHITE*10
 	flash_tween.tween_property(sprite, "self_modulate", Color.WHITE, 0.2)
+	death_particles.emitting = true
 	if hp <= 0:
+		var vfx = death_vfx.instantiate()
+		vfx.global_position = global_position
+		get_tree().root.add_child(vfx)
 		queue_free()
 
 
