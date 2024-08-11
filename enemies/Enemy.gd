@@ -3,6 +3,7 @@ class_name Enemy extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @export var speed: float = 64
 @export var damage: int = 5
+@export var knockback_multiplier: float = 1
 @onready var stun_timer = $StunTimer
 @onready var hurt_timer = $HurtTimer
 @onready var sprite = $SpriteTransform/Sprite
@@ -15,10 +16,10 @@ const IDLE = 0
 const CHASING = 1
 var stunned = false
 var state = 0
-var hp:int = 40
+@export var hp:int = 40
 var flash_tween
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if stunned:
 		velocity = velocity*0.95
 	elif state == IDLE:
@@ -31,23 +32,22 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	state = CHASING
 
 
-func _on_hurt_area_body_entered(body):
+func _on_hurt_area_body_entered(_body):
 	hitting = true
 	if hurt_timer.is_stopped():
 		_hurt_hero()
 
-func _on_hurt_area_body_exited(body):
+func _on_hurt_area_body_exited(_body):
 	hitting = false
 
-
-func hurt(damage, knockback):
-	hp -= damage
-	stun_timer.start(damage/10.0)
-	velocity = knockback
+func hurt(dmg, knockback):
+	hp -= dmg
+	stun_timer.start(dmg/20.0*knockback_multiplier)
+	velocity = knockback*knockback_multiplier*knockback_multiplier
 	stunned = true
 	animation_player.stop()
 	animation_player.play("hit")

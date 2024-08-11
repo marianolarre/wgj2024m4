@@ -9,6 +9,10 @@ const JUMP_VELOCITY = -400.0
 @onready var weapon = $Weapon
 @onready var death_timer = $Death
 @onready var ui = %UI
+@onready var attack_timer = $AttackTimer
+
+@onready var pisadas = $Audio/Pisadas
+@onready var audio_woosh = $Audio/AudioWhoosh
 
 const SWORD_ATTACK = preload("res://hero/SwordAttack.tscn")
 
@@ -18,6 +22,8 @@ var dying = false
 var flash_tween
 var talking = false
 var attack_side = 1
+var buffered_attack = false
+var attacking = false
 var direction
 var facing
 
@@ -42,7 +48,7 @@ func _on_finished_dialog():
 	talking = false
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if talking or dying:
 		return
 	direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
@@ -77,15 +83,21 @@ func _unhandled_input(event):
 
 
 func _attack():
-	attack_side = -attack_side
-	weapon.scale.y = attack_side
-	weapon_animation_player.stop()
-	weapon_animation_player.play("attack")
-	var attack = SWORD_ATTACK.instantiate()
-	attack.global_position = global_position + facing*128
-	attack.rotation = atan2(facing.y, facing.x)
-	attack.scale.y = -attack_side
-	get_tree().root.add_child(attack)
+	if attack_timer.time_left > 0:
+		buffered_attack = true
+	else:
+		attack_timer.start()
+		attacking = true
+		attack_side = -attack_side
+		weapon.scale.y = attack_side
+		weapon_animation_player.stop()
+		weapon_animation_player.play("attack")
+		audio_woosh.play()
+		var attack = SWORD_ATTACK.instantiate()
+		attack.global_position = global_position + facing*128
+		attack.rotation = atan2(facing.y, facing.x)
+		attack.scale.y = -attack_side
+		get_tree().root.add_child(attack)
 
 
 func hurt(damage):
@@ -98,6 +110,7 @@ func hurt(damage):
 		flash_tween = get_tree().create_tween()
 		sprite.self_modulate = Color.RED*10
 		flash_tween.tween_property(sprite, "self_modulate", Color.WHITE, 0.2)
+		$Audio/AudioHurt.play()
 		if hp <= 0 and not dying:
 			weapon.hide()
 			animation_player.stop()
@@ -109,3 +122,17 @@ func hurt(damage):
 
 func _on_death_timeout():
 	ui.fade_out(LoopManager.repeat_loop)
+
+
+func _audio_step():
+	var steps = pisadas.get_children()
+	var step = steps[randi() % steps.size()]
+	step.play()
+
+
+func _on_attack_timer_timeout():
+	if buffered_attack:
+		buffered_attack = false
+		_attack()
+	else:
+		attacking = false

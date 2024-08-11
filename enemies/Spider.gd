@@ -6,7 +6,7 @@ var direction
 func _ready():
 	random_offset = randf_range(0.0, 1.0)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if stunned:
 		velocity = velocity*0.95
 	elif state == IDLE:

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://duimobku6ttr0"]
+
+[ext_resource type="Texture2D" uid="uid://7kgmei5x16u3" path="res://deco/Tree1.png" id="1_wvh7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltb3b"]
+size = Vector2(45, 78)
+
+[node name="Casa" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(2, -14)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_wvh7p")
+offset = Vector2(-1.78048, -89.1951)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -43)
+shape = SubResource("RectangleShape2D_ltb3b")

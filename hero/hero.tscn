@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dk3lnlsd643h4"]
+[gd_scene load_steps=23 format=3 uid="uid://dk3lnlsd643h4"]
 
 [ext_resource type="Script" path="res://hero/Hero.gd" id="1_3hj77"]
 [ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="2_oh7x4"]
@@ -6,6 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://cg21m5n5vpht4" path="res://hero/Espada.png" id="4_6g7dg"]
 [ext_resource type="Theme" uid="uid://cobtjnd8j1weq" path="res://themes/ui_theme.tres" id="5_crd5h"]
 [ext_resource type="Script" path="res://hero/UI.tres.gd" id="5_gfm2h"]
+[ext_resource type="AudioStream" uid="uid://bqt52j376gyog" path="res://audio/SwordWoosh.ogg" id="7_8detm"]
+[ext_resource type="AudioStream" uid="uid://blm51tvwi1j4y" path="res://audio/golpe.ogg" id="8_nhl54"]
+[ext_resource type="AudioStream" uid="uid://cw4anbxosrekx" path="res://audio/pisada1.ogg" id="9_3f1gm"]
+[ext_resource type="AudioStream" uid="uid://ccyb0fwq4fxyp" path="res://audio/pisada2.ogg" id="10_tpmgl"]
+[ext_resource type="AudioStream" uid="uid://fk7w7hybcuqa" path="res://audio/pisada3.ogg" id="11_cwras"]
+[ext_resource type="AudioStream" uid="uid://bd2a0fcf2ne17" path="res://audio/pisada4.ogg" id="12_83b06"]
+[ext_resource type="AudioStream" uid="uid://c822iau575prx" path="res://audio/pisada5.ogg" id="13_8xwql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rop5"]
 radius = 20.0
@@ -111,6 +118,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0.54, 0.47), Vector2(0.465, 0.545), Vector2(0.54, 0.47)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.19),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_audio_step"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yf1xf"]
 _data = {
@@ -198,7 +219,7 @@ offset = Vector2(0, 63.0631)
 [node name="Sprite" type="Sprite2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(0, -6.56101)
+position = Vector2(0, -2.07564)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_sty6s")
 offset = Vector2(0, -119.07)
@@ -283,4 +304,34 @@ value = 21.96
 wait_time = 2.0
 one_shot = true
 
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioWhoosh" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_8detm")
+
+[node name="AudioHurt" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("8_nhl54")
+
+[node name="Pisadas" type="Node2D" parent="Audio"]
+
+[node name="AudioPisada1" type="AudioStreamPlayer2D" parent="Audio/Pisadas"]
+stream = ExtResource("9_3f1gm")
+
+[node name="AudioPisada2" type="AudioStreamPlayer2D" parent="Audio/Pisadas"]
+stream = ExtResource("10_tpmgl")
+
+[node name="AudioPisada3" type="AudioStreamPlayer2D" parent="Audio/Pisadas"]
+stream = ExtResource("11_cwras")
+
+[node name="AudioPisada4" type="AudioStreamPlayer2D" parent="Audio/Pisadas"]
+stream = ExtResource("12_83b06")
+
+[node name="AudioPisada5" type="AudioStreamPlayer2D" parent="Audio/Pisadas"]
+stream = ExtResource("13_8xwql")
+
 [connection signal="timeout" from="Death" to="." method="_on_death_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

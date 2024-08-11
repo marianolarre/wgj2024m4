@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://11r83r04o71x"]
+
+[ext_resource type="Texture2D" uid="uid://cojbvlvshg1sv" path="res://enemies/SlimeDisparo.png" id="1_a2n8k"]
+[ext_resource type="Script" path="res://enemies/SlimeShot.gd" id="1_n8elj"]
+[ext_resource type="Texture2D" uid="uid://bpkc1gf45xkya" path="res://whitecircle.png" id="3_ew0pq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jnofk"]
+radius = 17.0294
+
+[node name="SlimeShot" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("1_n8elj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -8)
+texture = ExtResource("1_a2n8k")
+offset = Vector2(0, -39)
+hframes = 2
+frame = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jnofk")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.156863)
+y_sort_enabled = true
+position = Vector2(0, -13)
+scale = Vector2(0.3, 0.2)
+texture = ExtResource("3_ew0pq")
+offset = Vector2(0, 65)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]

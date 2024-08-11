@@ -3,8 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://cf0g4vstsefeu" path="res://enemies/Enemy.tscn" id="1_osqq2"]
 [ext_resource type="Texture2D" uid="uid://cpm1b47glgnxh" path="res://enemies/Fantasma.png" id="2_prgx8"]
 
-[node name="Enemy" instance=ExtResource("1_osqq2")]
+[node name="Ghost" instance=ExtResource("1_osqq2")]
+speed = 100.0
+damage = 10
+knockback_multiplier = 0.1
 movement_animation = "float"
+hp = 50
 
 [node name="Sprite" parent="SpriteTransform" index="0"]
 texture = ExtResource("2_prgx8")

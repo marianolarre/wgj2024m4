@@ -6,7 +6,7 @@ Dev#Consola
 Dev#Probando probando"
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	DialogManager.finished_dialog.connect(_loop)
 	DialogManager.start_dialog(self, text)
 

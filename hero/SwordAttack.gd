@@ -14,4 +14,9 @@ func _on_timer_timeout():
 	queue_free()
 
 func _on_area_2d_body_entered(body):
+	$Hit.play()
 	body.hurt(10, transform.x*400 + Vector2(randf_range(-100, 100), randf_range(-100, 100)))
+
+
+func _on_disable_timer_timeout():
+	$Area2D.monitoring = false

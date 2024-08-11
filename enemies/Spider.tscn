@@ -144,7 +144,9 @@ platform_on_leave = 2
 platform_floor_layers = 4294901760
 safe_margin = 1.0
 script = ExtResource("1_cgbu6")
-speed = 200.0
+speed = 400.0
+damage = 10
+hp = 30
 
 [node name="SpriteTransform" type="Marker2D" parent="."]
 scale = Vector2(0.5, 0.5)
