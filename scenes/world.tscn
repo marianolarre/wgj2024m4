@@ -104,7 +104,7 @@ loopNumber = -1
 condition = 3
 
 [node name="Pescador" parent="Loops/AllLoops" instance=ExtResource("3_m25h3")]
-position = Vector2(11153, 996)
+position = Vector2(11247, 906)
 text = "Yo#¿Ya comiste? Tengo un pececito para ti.
 Yo#*Te da un pez*
 Yo#<Error, Pez no encontrado>"

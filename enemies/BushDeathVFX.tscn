@@ -18,8 +18,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_570ys"]
-_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.131309, 0, 0, Vector2(0.86218, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.24881, 0.0, 0, 0]
+point_count = 3
 
 [node name="DeathVfx" type="Node2D"]
 script = ExtResource("1_y87io")
@@ -54,29 +54,31 @@ position = Vector2(0, -28)
 scale = Vector2(2, 2)
 emitting = false
 amount = 16
-lifetime = 5.0
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
+randomness = 0.5
 lifetime_randomness = 0.55
 texture = ExtResource("3_6rix5")
 emission_shape = 3
 emission_rect_extents = Vector2(50, 50)
-particle_flag_align_y = true
-direction = Vector2(0, 0)
-spread = 180.0
+direction = Vector2(0, -1)
+spread = 62.95
 gravity = Vector2(0, 130)
 initial_velocity_min = 50.0
 initial_velocity_max = 100.0
 angular_velocity_min = -10.0
 angular_velocity_max = 10.0
-damping_min = 100.0
-damping_max = 200.0
+damping_min = 90.0
+damping_max = 120.0
+angle_min = -104.5
+angle_max = 210.5
 scale_amount_min = 0.0
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_570ys")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 3.0
 one_shot = true
 autostart = true
 
