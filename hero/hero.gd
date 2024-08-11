@@ -136,3 +136,16 @@ func _on_attack_timer_timeout():
 		_attack()
 	else:
 		attacking = false
+
+var target_teleport_position
+func teleport(pos):
+	talking = true
+	animation_player.play("idle")
+	target_teleport_position = pos
+	ui.fade_out(_finish_teleport)
+
+func _finish_teleport():
+	talking = false
+	global_position = target_teleport_position
+	$Camera2D.reset_smoothing()
+	ui.fade_in()

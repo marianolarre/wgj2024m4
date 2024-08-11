@@ -7,6 +7,8 @@ extends CanvasLayer
 
 func _ready():
 	show()
+	fade_to_black.show()
+	damage_overlay.show()
 
 func set_hp(hp):
 	health_bar.value = hp
@@ -14,13 +16,13 @@ func set_hp(hp):
 func fade_in():
 	fade_to_black.color = Color.from_string("#202329", Color.BLACK)
 	var tween = get_tree().create_tween()
-	tween.tween_property(fade_to_black, "color", Color.from_string("#20232900", Color.BLACK), 1)
+	tween.tween_property(fade_to_black, "color", Color.from_string("#20232900", Color.BLACK), 0.5)
 
 func fade_out(callback):
 	fade_to_black.color = Color.from_string("#20232900", Color.BLACK)
 	var tween = get_tree().create_tween()
-	tween.tween_property(fade_to_black, "color", Color.from_string("#202329", Color.BLACK), 1)
-	tween.tween_callback(callback).set_delay(1)
+	tween.tween_property(fade_to_black, "color", Color.from_string("#202329", Color.BLACK), 0.5)
+	tween.tween_callback(callback)
 
 func hurt_overlay():
 	damage_overlay.color = Color.from_string("#ff000040", Color.RED)

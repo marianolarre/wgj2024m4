@@ -237,6 +237,7 @@ position = Vector2(0, -140)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="Weapon" type="Marker2D" parent="."]
 z_as_relative = false
