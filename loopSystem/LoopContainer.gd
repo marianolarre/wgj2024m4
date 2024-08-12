@@ -4,6 +4,7 @@ class_name LoopContainer extends Node2D
 @export_enum("=", ">=", "<=", "!=", "()", ")(") var condition
 @export var loopNumberRange: int
 @onready var spawnpoint = $"Spawnpoint"
+@export_multiline var startDialog: String
 @export var deathIsScripted: bool
 
 func _ready():
@@ -26,3 +27,5 @@ func _ready():
 		%Hero.global_position = spawnpoint.global_position
 	if deathIsScripted:
 		LoopManager.next_death_loops()
+	if startDialog and startDialog != "":
+		DialogManager.start_dialog(self, startDialog)

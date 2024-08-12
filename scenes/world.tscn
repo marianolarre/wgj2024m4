@@ -751,6 +751,8 @@ y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 2
 condition = 0
+startDialog = "Heroe#¿...?
+Heroe#¿Que pasó?"
 
 [node name="Pescador" parent="Loops/Loop2_Repetido" instance=ExtResource("3_m25h3")]
 position = Vector2(8051, 1228)
@@ -858,6 +860,7 @@ y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 3
 condition = 0
+startDialog = "Heroe#Diablos"
 
 [node name="Pescador" parent="Loops/Loop3_Rerepetido" instance=ExtResource("3_m25h3")]
 position = Vector2(8051, 1228)
@@ -953,6 +956,7 @@ y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 4
 condition = 0
+startDialog = "Heroe#¿Qué es ese ruido afuera?"
 
 [node name="LoopEnder" parent="Loops/Loop4_Caos" instance=ExtResource("8_lhb3x")]
 position = Vector2(1087, 2406)
@@ -966,507 +970,507 @@ shape = SubResource("RectangleShape2D_q2t4o")
 
 [node name="HarmlessGhost5" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(431, 585)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost6" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(465, 479)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost7" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(356, 487)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost8" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(326, 593)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost9" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(783, -71)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost10" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(881, -11)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost11" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(-395, -64)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost12" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(366, 1428)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost13" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(467, 1408)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost14" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(457, 1509)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost15" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(593, 1509)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost16" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(603, 1398)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost17" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(154, 1116)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost18" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(265, 1202)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost19" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2146, 1479)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost20" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2101, 1539)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost21" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2171, 1567)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost22" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2114, 1631)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost23" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2190, 1665)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost24" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2150, 1739)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost25" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2221, 1803)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider3" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-223, 275)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider4" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-159, 360)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider5" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-295, 377)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider6" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-223, 462)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider7" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(599, 610)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider8" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(709, 559)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider9" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(595, 500)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider10" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(697, 458)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider11" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(616, 373)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider12" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-11, 1678)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider13" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(99, 1627)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider14" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-15, 1568)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider15" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(87, 1526)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider16" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(6, 1441)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider17" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(886, 1688)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider18" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(996, 1637)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider19" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(882, 1578)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider20" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(984, 1536)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider21" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(903, 1451)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider22" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1551, 1880)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider23" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1661, 1829)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider24" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1547, 1770)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider25" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1649, 1728)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider26" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1568, 1643)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider27" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1798, 1769)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider28" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1908, 1718)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider29" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1794, 1659)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider30" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1896, 1617)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider31" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1815, 1532)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime5" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(-205, 610)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime6" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(-118, 625)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime7" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(820, 529)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime8" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(569, 1813)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime9" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(681, 1804)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime10" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(793, 1804)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime11" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(685, 1674)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime12" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(1381, 1535)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime13" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(1444, 1593)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime14" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(1395, 1665)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime15" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(1435, 1759)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime16" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(645, 1095)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime17" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(623, 1185)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost26" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(491, 605)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost27" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(525, 499)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost28" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(416, 507)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost29" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(386, 613)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost30" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(843, -51)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost31" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(941, 9)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost32" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(-335, -44)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost33" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(426, 1448)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost34" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(527, 1428)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost35" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(517, 1529)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost36" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(653, 1529)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost37" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(663, 1418)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost38" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(214, 1136)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost39" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(325, 1222)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost40" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2206, 1499)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost41" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2161, 1559)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost42" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2231, 1587)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost43" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2174, 1651)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost44" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2250, 1685)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost45" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2210, 1759)
-damage = 0
+damage = 1
 
 [node name="HarmlessGhost46" parent="Loops/Loop4_Caos" instance=ExtResource("7_fw2ur")]
 position = Vector2(2281, 1823)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider32" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-163, 295)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider33" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-99, 380)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider34" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-235, 397)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider35" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(-163, 482)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider36" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(659, 630)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider37" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(769, 579)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider38" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(655, 520)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider39" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(757, 478)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider40" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(676, 393)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider41" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(49, 1698)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider42" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(159, 1647)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider43" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(45, 1588)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider44" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(147, 1546)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider45" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(66, 1461)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider46" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(946, 1708)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider47" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1056, 1657)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider48" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(942, 1598)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider49" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1044, 1556)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider50" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(963, 1471)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider51" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1611, 1900)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider52" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1721, 1849)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider53" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1607, 1790)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider54" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1709, 1748)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider55" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1628, 1663)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider56" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1858, 1789)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider57" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1968, 1738)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider58" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1854, 1679)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider59" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1956, 1637)
-damage = 0
+damage = 1
 
 [node name="HarmlessSpider60" parent="Loops/Loop4_Caos" instance=ExtResource("6_40sjp")]
 position = Vector2(1875, 1552)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime18" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(-145, 630)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime19" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(-58, 645)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime20" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(880, 549)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime21" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(629, 1833)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime22" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(741, 1824)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime23" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(853, 1824)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime24" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(745, 1694)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime25" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(1441, 1555)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime26" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(1504, 1613)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime27" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(1455, 1685)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime28" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(1495, 1779)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime29" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(705, 1115)
-damage = 0
+damage = 1
 
 [node name="HarmlessSlime30" parent="Loops/Loop4_Caos" instance=ExtResource("17_11rms")]
 position = Vector2(683, 1205)
-damage = 0
+damage = 1
 
 [node name="Loop5_Noche" type="Node2D" parent="Loops"]
 visible = false
@@ -1760,6 +1764,8 @@ y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 8
 condition = 0
+startDialog = "Heroe#¡Eso fue injusto!
+Dev#Ok, faltó balance, pero todo se arregla"
 
 [node name="Arbol87" parent="Loops/Loop8_Rata" instance=ExtResource("16_sbe8q")]
 position = Vector2(6555, 3341)
