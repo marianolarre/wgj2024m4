@@ -165,3 +165,12 @@ func _finish_teleport():
 func blue_screen():
 	ui.blue_screen()
 	talking = true
+	animation_player.play("idle")
+	$Audio/Musica.stop()
+	$UI/PantallaAzul/BuggedSound.start()
+
+
+func _on_bugged_sound_timeout():
+	var pisada1 = pisadas.get_children()[0]
+	pisada1.volume_db = max(pisada1.volume_db-0.1, -10)
+	pisada1.play()

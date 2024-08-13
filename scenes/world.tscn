@@ -1524,7 +1524,6 @@ text = "Yo#Parece que la bebida recobra su magia"
 texture = ExtResource("3_ci5r4")
 
 [node name="Loop6_PantallaAzul" type="Node2D" parent="Loops"]
-visible = false
 y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 6
@@ -1631,6 +1630,7 @@ shape = SubResource("RectangleShape2D_q2t4o")
 wait_time = 2.0
 
 [node name="Loop7_Jefe" type="Node2D" parent="Loops"]
+visible = false
 y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 7

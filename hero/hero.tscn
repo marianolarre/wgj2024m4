@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cg21m5n5vpht4" path="res://hero/Espada.png" id="4_6g7dg"]
 [ext_resource type="Theme" uid="uid://cobtjnd8j1weq" path="res://themes/ui_theme.tres" id="5_crd5h"]
 [ext_resource type="Script" path="res://hero/UI.tres.gd" id="5_gfm2h"]
-[ext_resource type="Texture2D" uid="uid://cp7sx0hyep1vd" path="res://UI/450_1000.jpg" id="7_6rlnt"]
 [ext_resource type="AudioStream" uid="uid://bqt52j376gyog" path="res://audio/SwordWoosh.ogg" id="7_8detm"]
+[ext_resource type="Texture2D" uid="uid://rnywmpf53xbl" path="res://UI/bluescreen.png" id="7_t1dvs"]
 [ext_resource type="AudioStream" uid="uid://blm51tvwi1j4y" path="res://audio/golpe.ogg" id="8_nhl54"]
 [ext_resource type="AudioStream" uid="uid://cw4anbxosrekx" path="res://audio/pisada1.ogg" id="9_3f1gm"]
 [ext_resource type="AudioStream" uid="uid://dg0a6smefub0k" path="res://audio/adventure1g.mp3" id="9_m65ey"]
@@ -314,7 +314,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_6rlnt")
+texture = ExtResource("7_t1dvs")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="BuggedSound" type="Timer" parent="UI/PantallaAzul"]
+wait_time = 0.1
 
 [node name="Death" type="Timer" parent="."]
 wait_time = 2.0
@@ -353,5 +358,6 @@ stream = ExtResource("12_83b06")
 [node name="AudioPisada5" type="AudioStreamPlayer2D" parent="Audio/Pisadas"]
 stream = ExtResource("13_8xwql")
 
+[connection signal="timeout" from="UI/PantallaAzul/BuggedSound" to="." method="_on_bugged_sound_timeout"]
 [connection signal="timeout" from="Death" to="." method="_on_death_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

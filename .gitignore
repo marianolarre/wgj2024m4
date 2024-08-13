@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 /html_builds
+/html_builds
