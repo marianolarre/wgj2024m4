@@ -9,9 +9,12 @@ const SPEED = 450.0
 @onready var death_timer = $Death
 @onready var ui = %UI
 @onready var attack_timer = $AttackTimer
+@onready var camera_2d = $Camera2D
 
 @onready var pisadas = $Audio/Pisadas
 @onready var audio_woosh = $Audio/AudioWhoosh
+
+var current_screen_shake = 0
 
 const SWORD_ATTACK = preload("res://hero/SwordAttack.tscn")
 
@@ -29,7 +32,7 @@ var facing
 var has_sword = false
 
 signal interacted()
-
+signal got_wood()
 
 func _ready():
 	DialogManager.started_dialog.connect(_on_started_dialog)
@@ -56,6 +59,13 @@ func _on_finished_dialog():
 
 
 func _physics_process(_delta):
+	if current_screen_shake > 0:
+		current_screen_shake *= 0.8
+		current_screen_shake -= 0.01
+		if current_screen_shake < 0:
+			current_screen_shake = 0
+		camera_2d.position = Vector2(randf_range(-current_screen_shake, current_screen_shake), randf_range(-current_screen_shake, current_screen_shake))
+	
 	if talking or dying:
 		return
 	direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
@@ -105,6 +115,7 @@ func _attack():
 		weapon_animation_player.play("attack")
 		audio_woosh.play()
 		var attack = SWORD_ATTACK.instantiate()
+		attack.set_hero(self)
 		attack.global_position = global_position + facing*128
 		attack.rotation = atan2(facing.y, facing.x)
 		attack.scale.y = -attack_side
@@ -122,7 +133,9 @@ func hurt(damage):
 		sprite.self_modulate = Color.RED*10
 		flash_tween.tween_property(sprite, "self_modulate", Color.WHITE, 0.2)
 		$Audio/AudioHurt.play()
+		screen_shake(80)
 		if hp <= 0 and not dying:
+			screen_shake(120)
 			weapon.hide()
 			animation_player.stop()
 			animation_player.play("death")
@@ -155,6 +168,7 @@ func teleport(pos):
 	target_teleport_position = pos
 	ui.fade_out(_finish_teleport)
 
+
 func _finish_teleport():
 	talking = false
 	global_position = target_teleport_position
@@ -174,3 +188,13 @@ func _on_bugged_sound_timeout():
 	var pisada1 = pisadas.get_children()[0]
 	pisada1.volume_db = max(pisada1.volume_db-0.1, -10)
 	pisada1.play()
+
+
+func screen_shake(intensity):
+	current_screen_shake = max(current_screen_shake, intensity)
+
+
+func _on_pickup_range_body_entered(body):
+	$Audio/GrabItem.play()
+	body.queue_free()
+	got_wood.emit()

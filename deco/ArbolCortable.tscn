@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://00mv0f3jibee"]
+
+[ext_resource type="Script" path="res://deco/Arbol.gd" id="1_kbibv"]
+[ext_resource type="Texture2D" uid="uid://7kgmei5x16u3" path="res://deco/Tree1.png" id="2_87dce"]
+[ext_resource type="Texture2D" uid="uid://c0fbw3qndr3ux" path="res://enemies/trace_06.png" id="3_kmlym"]
+[ext_resource type="AudioStream" uid="uid://622a386wk07h" path="res://audio/cortando madera arboles.ogg" id="4_2vul8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltb3b"]
+size = Vector2(47, 91)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hxcs3"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_k0o5k"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[node name="ArbolCortable" type="StaticBody2D"]
+script = ExtResource("1_kbibv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(2, -14)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_87dce")
+offset = Vector2(-1.78048, -89.1951)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -44)
+shape = SubResource("RectangleShape2D_ltb3b")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+z_index = 1
+material = SubResource("CanvasItemMaterial_hxcs3")
+position = Vector2(0, -28)
+scale = Vector2(2, 2)
+emitting = false
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_kmlym")
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+damping_min = 1000.0
+damping_max = 1000.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_k0o5k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2vul8")
+volume_db = 6.0
+max_distance = 200000.0
+attenuation = 1e-05

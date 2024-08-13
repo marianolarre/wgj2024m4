@@ -49,14 +49,14 @@ b = Vector2(304, 336)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2t4o"]
 size = Vector2(558, 3512)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aupi1"]
-size = Vector2(609, 120)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_y0un6"]
 radius = 701.17
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cm5oe"]
 radius = 142.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aupi1"]
+size = Vector2(609, 120)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_otxfp"]
 a = Vector2(-499, 571)
@@ -96,7 +96,7 @@ layer_2/tile_data = PackedInt32Array(-2818057, 131073, 2, -2883593, 131073, 2, -
 visible = false
 position = Vector2(204, 174)
 script = ExtResource("1_efu0h")
-loopNumber = 6
+loopNumber = 7
 condition = 3
 
 [node name="Outside_To_House" parent="Casa" instance=ExtResource("18_xe1r0")]
@@ -1509,6 +1509,7 @@ shape = SubResource("RectangleShape2D_q2t4o")
 wait_time = 2.0
 
 [node name="Loop5_Noche" type="Node2D" parent="Loops"]
+visible = false
 y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 5
@@ -1545,8 +1546,6 @@ Heroe#¿Padre?
 Yo#¿Hijo?
 Dev#Son las 3 am. No me puedo dormir y mis amigos me dijeron que la historia les parece re cliché y hasta lenta. 
 Dev#HAGAN USTEDES UN JUEGO ENTONCES ¡AGUANTE ALFIO!
-Dev#Hmm...
-Dev#¡Ya se qué es lo que hace falta!
 Dev#> reiniciar_juego"
 effect = 1
 
@@ -1560,119 +1559,48 @@ text = "Yo#Parece que la bebida recobra su magia"
 [node name="Sprite" parent="Loops/Loop5_Noche/Orca/SpriteTransform" index="0"]
 texture = ExtResource("3_ci5r4")
 
-[node name="Loop6_CraftSurvival" type="Node2D" parent="Loops"]
+[node name="Loop6_Jefe" type="Node2D" parent="Loops"]
 visible = false
 y_sort_enabled = true
 script = ExtResource("1_efu0h")
 loopNumber = 6
 condition = 0
-startDialog = "Yo#Tip: Consigue 20 de madera para construir una casa."
-
-[node name="Spawnpoint" type="Marker2D" parent="Loops/Loop6_CraftSurvival"]
-position = Vector2(204, 86)
-
-[node name="DialogPosition" type="Marker2D" parent="Loops/Loop6_CraftSurvival"]
-position = Vector2(401, -56)
-
-[node name="PreSword" type="Node2D" parent="Loops/Loop6_CraftSurvival"]
-position = Vector2(388, 216)
-script = ExtResource("28_aj2nf")
-
-[node name="Interactable" parent="Loops/Loop6_CraftSurvival/PreSword" instance=ExtResource("19_jvht8")]
-position = Vector2(-91, -63)
-
-[node name="Sword" type="Sprite2D" parent="Loops/Loop6_CraftSurvival/PreSword"]
-position = Vector2(-81, -63)
-rotation = 1.12574
-scale = Vector2(0.545, 0.545)
-texture = ExtResource("20_mk4wu")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Loops/Loop6_CraftSurvival"]
-position = Vector2(273, 832)
-
-[node name="Stone" type="Sprite2D" parent="Loops/Loop6_CraftSurvival/StaticBody2D"]
-position = Vector2(146, 2.99994)
-rotation = -1.5708
-scale = Vector2(0.755, 0.755)
-texture = ExtResource("3_aogm6")
-
-[node name="Stone2" type="Sprite2D" parent="Loops/Loop6_CraftSurvival/StaticBody2D"]
-position = Vector2(-163, 8)
-rotation = -1.69646
-scale = Vector2(0.755, -0.755)
-texture = ExtResource("3_aogm6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Loops/Loop6_CraftSurvival/StaticBody2D"]
-position = Vector2(-4.5, 0)
-shape = SubResource("RectangleShape2D_aupi1")
-
-[node name="MesaDeCrafteo" type="Node2D" parent="Loops/Loop6_CraftSurvival"]
-position = Vector2(178, -116)
-script = ExtResource("32_byedv")
-
-[node name="Interactable" parent="Loops/Loop6_CraftSurvival/MesaDeCrafteo" instance=ExtResource("19_jvht8")]
-
-[node name="Sprite2D" type="Sprite2D" parent="Loops/Loop6_CraftSurvival/MesaDeCrafteo/Interactable"]
-position = Vector2(33.9583, -83)
-texture = ExtResource("32_tlqoj")
-
-[node name="Label" type="Label" parent="Loops/Loop6_CraftSurvival/MesaDeCrafteo/Interactable"]
-offset_left = -73.0
-offset_top = -107.0
-offset_right = -10.0
-offset_bottom = -65.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "0/20"
-
-[node name="Sprite2D" type="Sprite2D" parent="Loops/Loop6_CraftSurvival/MesaDeCrafteo"]
-texture = ExtResource("29_nn2sm")
-
-[node name="DialogPosition" type="Marker2D" parent="Loops/Loop6_CraftSurvival/MesaDeCrafteo"]
-position = Vector2(0, -125)
-
-[node name="Loop7_Jefe" type="Node2D" parent="Loops"]
-visible = false
-y_sort_enabled = true
-script = ExtResource("1_efu0h")
-loopNumber = 7
-condition = 0
 deathIsScripted = true
 
-[node name="Bardo" parent="Loops/Loop7_Jefe" instance=ExtResource("3_m25h3")]
+[node name="Bardo" parent="Loops/Loop6_Jefe" instance=ExtResource("3_m25h3")]
 position = Vector2(3388, 1480)
 text = "Yo#*HEROEEE HEROEEE*"
 
-[node name="Sprite" parent="Loops/Loop7_Jefe/Bardo/SpriteTransform" index="0"]
+[node name="Sprite" parent="Loops/Loop6_Jefe/Bardo/SpriteTransform" index="0"]
 texture = ExtResource("3_wfgps")
 
-[node name="AudioStreamPlayer2D" parent="Loops/Loop7_Jefe/Bardo" index="6"]
+[node name="AudioStreamPlayer2D" parent="Loops/Loop6_Jefe/Bardo" index="6"]
 stream = ExtResource("16_r55il")
 
-[node name="Enano" parent="Loops/Loop7_Jefe" instance=ExtResource("3_m25h3")]
+[node name="Enano" parent="Loops/Loop6_Jefe" instance=ExtResource("3_m25h3")]
 position = Vector2(2014, 1815)
 text = "Yo#Escuche que el rey se fue de viaje.
 Yo#Ya quisiera poder irme también… "
 
-[node name="Sprite" parent="Loops/Loop7_Jefe/Enano/SpriteTransform" index="0"]
+[node name="Sprite" parent="Loops/Loop6_Jefe/Enano/SpriteTransform" index="0"]
 texture = ExtResource("6_ckpms")
 
-[node name="Elfa" parent="Loops/Loop7_Jefe" instance=ExtResource("3_m25h3")]
+[node name="Elfa" parent="Loops/Loop6_Jefe" instance=ExtResource("3_m25h3")]
 position = Vector2(1476, 1415)
 text = "Yo#¿Nos vas a salvar, verdad? "
 
-[node name="Sprite" parent="Loops/Loop7_Jefe/Elfa/SpriteTransform" index="0"]
+[node name="Sprite" parent="Loops/Loop6_Jefe/Elfa/SpriteTransform" index="0"]
 texture = ExtResource("7_y242w")
 
-[node name="Orca" parent="Loops/Loop7_Jefe" instance=ExtResource("3_m25h3")]
+[node name="Orca" parent="Loops/Loop6_Jefe" instance=ExtResource("3_m25h3")]
 position = Vector2(-7112, 3980)
 text = "Yo#¿El elegido, eh?
 Yo#Qué suerte tienen algunos. "
 
-[node name="Sprite" parent="Loops/Loop7_Jefe/Orca/SpriteTransform" index="0"]
+[node name="Sprite" parent="Loops/Loop6_Jefe/Orca/SpriteTransform" index="0"]
 texture = ExtResource("3_ci5r4")
 
-[node name="Slime4" parent="Loops/Loop7_Jefe" instance=ExtResource("17_11rms")]
+[node name="Slime4" parent="Loops/Loop6_Jefe" instance=ExtResource("17_11rms")]
 position = Vector2(5661, 1671)
 shooting_speed = 1000
 spread = 600
@@ -1681,84 +1609,153 @@ damage = 20
 knockback_multiplier = 0.0
 hp = 10000000000
 
-[node name="SpriteTransform" parent="Loops/Loop7_Jefe/Slime4" index="0"]
+[node name="SpriteTransform" parent="Loops/Loop6_Jefe/Slime4" index="0"]
 scale = Vector2(3, 3)
 
-[node name="AnimationPlayer" parent="Loops/Loop7_Jefe/Slime4" index="3"]
+[node name="AnimationPlayer" parent="Loops/Loop6_Jefe/Slime4" index="3"]
 speed_scale = 0.5
 
-[node name="CollisionShape2D" parent="Loops/Loop7_Jefe/Slime4/DetectionArea" index="0"]
+[node name="CollisionShape2D" parent="Loops/Loop6_Jefe/Slime4/DetectionArea" index="0"]
 position = Vector2(0, -96)
 shape = SubResource("CircleShape2D_y0un6")
 
-[node name="CollisionShape2D" parent="Loops/Loop7_Jefe/Slime4/HurtArea" index="0"]
+[node name="CollisionShape2D" parent="Loops/Loop6_Jefe/Slime4/HurtArea" index="0"]
 shape = SubResource("CircleShape2D_cm5oe")
 
-[node name="StunTimer" parent="Loops/Loop7_Jefe/Slime4" index="6"]
+[node name="StunTimer" parent="Loops/Loop6_Jefe/Slime4" index="6"]
 wait_time = 0.05
 
-[node name="HurtTimer" parent="Loops/Loop7_Jefe/Slime4" index="7"]
+[node name="HurtTimer" parent="Loops/Loop6_Jefe/Slime4" index="7"]
 wait_time = 0.5
 
-[node name="ShootTimer" parent="Loops/Loop7_Jefe/Slime4" index="8"]
+[node name="ShootTimer" parent="Loops/Loop6_Jefe/Slime4" index="8"]
 wait_time = 0.1
 
-[node name="Arbol87" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol87" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(5620, 2415)
 
-[node name="Arbol88" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol88" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(5673, 2436)
 
-[node name="Arbol89" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol89" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(5723, 2415)
 
-[node name="Arbol90" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol90" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(5787, 2447)
 
-[node name="Arbol91" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol91" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(5844, 2497)
 
-[node name="Arbol92" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol92" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(5915, 2440)
 
-[node name="Arbol93" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol93" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(5983, 2408)
 
-[node name="Arbol94" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol94" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6044, 2454)
 
-[node name="Arbol95" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol95" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6108, 2425)
 
-[node name="Arbol96" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol96" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6172, 2496)
 
-[node name="Arbol97" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol97" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6225, 2457)
 
-[node name="Arbol98" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol98" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6830, 1840)
 
-[node name="Arbol99" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol99" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6794, 1760)
 
-[node name="Arbol100" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol100" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6730, 1692)
 
-[node name="Arbol101" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol101" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6702, 1592)
 
-[node name="Arbol102" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol102" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6650, 1528)
 
-[node name="Arbol103" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol103" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6598, 1468)
 
-[node name="Arbol104" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol104" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6642, 1408)
 
-[node name="Arbol105" parent="Loops/Loop7_Jefe" instance=ExtResource("16_sbe8q")]
+[node name="Arbol105" parent="Loops/Loop6_Jefe" instance=ExtResource("16_sbe8q")]
 position = Vector2(6566, 1300)
+
+[node name="Loop7_CraftSurvival" type="Node2D" parent="Loops"]
+y_sort_enabled = true
+script = ExtResource("1_efu0h")
+loopNumber = 7
+condition = 0
+
+[node name="Spawnpoint" type="Marker2D" parent="Loops/Loop7_CraftSurvival"]
+position = Vector2(204, 86)
+
+[node name="PreSword" type="Node2D" parent="Loops/Loop7_CraftSurvival"]
+position = Vector2(388, 216)
+script = ExtResource("28_aj2nf")
+
+[node name="Interactable" parent="Loops/Loop7_CraftSurvival/PreSword" instance=ExtResource("19_jvht8")]
+position = Vector2(-91, -63)
+
+[node name="Sword" type="Sprite2D" parent="Loops/Loop7_CraftSurvival/PreSword"]
+position = Vector2(-81, -63)
+rotation = 1.12574
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("20_mk4wu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Loops/Loop7_CraftSurvival"]
+position = Vector2(273, 832)
+
+[node name="Stone" type="Sprite2D" parent="Loops/Loop7_CraftSurvival/StaticBody2D"]
+position = Vector2(146, 2.99994)
+rotation = -1.5708
+scale = Vector2(0.755, 0.755)
+texture = ExtResource("3_aogm6")
+
+[node name="Stone2" type="Sprite2D" parent="Loops/Loop7_CraftSurvival/StaticBody2D"]
+position = Vector2(-163, 8)
+rotation = -1.69646
+scale = Vector2(0.755, -0.755)
+texture = ExtResource("3_aogm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Loops/Loop7_CraftSurvival/StaticBody2D"]
+position = Vector2(-4.5, 0)
+shape = SubResource("RectangleShape2D_aupi1")
+
+[node name="MesaDeCrafteo" type="Node2D" parent="Loops/Loop7_CraftSurvival"]
+position = Vector2(178, -116)
+script = ExtResource("32_byedv")
+
+[node name="Interactable" parent="Loops/Loop7_CraftSurvival/MesaDeCrafteo" instance=ExtResource("19_jvht8")]
+
+[node name="InteractIndicator" parent="Loops/Loop7_CraftSurvival/MesaDeCrafteo/Interactable" index="1"]
+position = Vector2(25, -122)
+
+[node name="IndicatorTransform" parent="Loops/Loop7_CraftSurvival/MesaDeCrafteo/Interactable/InteractIndicator" index="0"]
+position = Vector2(13, 32)
+scale = Vector2(0.96, 0.96)
+
+[node name="Sprite2D" parent="Loops/Loop7_CraftSurvival/MesaDeCrafteo/Interactable/InteractIndicator/IndicatorTransform" index="0"]
+texture = ExtResource("32_tlqoj")
+
+[node name="Label" type="Label" parent="Loops/Loop7_CraftSurvival/MesaDeCrafteo/Interactable/InteractIndicator/IndicatorTransform" index="1"]
+offset_left = -98.9583
+offset_top = -22.9167
+offset_right = -35.9583
+offset_bottom = 19.0833
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "0/20"
+
+[node name="Sprite2D" type="Sprite2D" parent="Loops/Loop7_CraftSurvival/MesaDeCrafteo"]
+texture = ExtResource("29_nn2sm")
 
 [node name="Loop8_Rata" type="Node2D" parent="Loops"]
 visible = false
@@ -2029,8 +2026,7 @@ texture = ExtResource("30_p0upv")
 
 [connection signal="body_entered" from="Loops/Loop4_Caos/PantallaAzul" to="Loops/Loop4_Caos/PantallaAzul" method="_on_body_entered"]
 [connection signal="timeout" from="Loops/Loop4_Caos/PantallaAzul/Timer" to="Loops/Loop4_Caos/PantallaAzul" method="_on_timer_timeout"]
-[connection signal="interacted" from="Loops/Loop6_CraftSurvival/PreSword/Interactable" to="Loops/Loop6_CraftSurvival/PreSword" method="_on_interactable_interacted"]
-[connection signal="interacted" from="Loops/Loop6_CraftSurvival/MesaDeCrafteo/Interactable" to="Loops/Loop6_CraftSurvival/MesaDeCrafteo" method="_on_interactable_interacted"]
+[connection signal="interacted" from="Loops/Loop7_CraftSurvival/PreSword/Interactable" to="Loops/Loop7_CraftSurvival/PreSword" method="_on_interactable_interacted"]
 [connection signal="interacted" from="StartingHouse/PreSword/Interactable" to="StartingHouse" method="_on_interactable_interacted"]
 
 [editable path="Casa/Outside_To_House"]
@@ -2067,11 +2063,12 @@ texture = ExtResource("30_p0upv")
 [editable path="Loops/Loop3_Rerepetido/LoopEnder"]
 [editable path="Loops/Loop5_Noche/Mago"]
 [editable path="Loops/Loop5_Noche/Orca"]
-[editable path="Loops/Loop7_Jefe/Bardo"]
-[editable path="Loops/Loop7_Jefe/Enano"]
-[editable path="Loops/Loop7_Jefe/Elfa"]
-[editable path="Loops/Loop7_Jefe/Orca"]
-[editable path="Loops/Loop7_Jefe/Slime4"]
+[editable path="Loops/Loop6_Jefe/Bardo"]
+[editable path="Loops/Loop6_Jefe/Enano"]
+[editable path="Loops/Loop6_Jefe/Elfa"]
+[editable path="Loops/Loop6_Jefe/Orca"]
+[editable path="Loops/Loop6_Jefe/Slime4"]
+[editable path="Loops/Loop7_CraftSurvival/MesaDeCrafteo/Interactable"]
 [editable path="Loops/Loop8_Rata/Rata"]
 [editable path="Loops/Loop8_Rata/Estatua"]
 [editable path="Loops/Loop_FinalPlaceholder/Rata"]

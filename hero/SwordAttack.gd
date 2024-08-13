@@ -13,8 +13,13 @@ func _process(delta):
 func _on_timer_timeout():
 	queue_free()
 
+var attack_owner
+func set_hero(hero):
+	attack_owner = hero
+
 func _on_area_2d_body_entered(body):
 	$Hit.play()
+	attack_owner.screen_shake(40)
 	body.hurt(10, transform.x*400 + Vector2(randf_range(-100, 100), randf_range(-100, 100)))
 
 
