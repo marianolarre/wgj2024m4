@@ -6,7 +6,7 @@ const TREE_1_CUT = preload("res://arbol/Tree1cut.png")
 @onready var wood_item_scene = preload("res://interactable/WoodItem.tscn")
 
 func _ready():
-	if LoopManager.loop == 6:
+	if LoopManager.loop == 5:
 		set_collision_layer_value(7, true)
 
 func hurt(dmg, knockback):

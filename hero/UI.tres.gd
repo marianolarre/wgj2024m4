@@ -33,3 +33,6 @@ func hurt_overlay():
 
 func blue_screen():
 	pantalla_azul.show()
+
+func boss_bar():
+	$BossHPBar.show()

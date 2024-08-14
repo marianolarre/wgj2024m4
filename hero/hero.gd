@@ -193,6 +193,8 @@ func _on_bugged_sound_timeout():
 func screen_shake(intensity):
 	current_screen_shake = max(current_screen_shake, intensity)
 
+func boss_bar():
+	ui.boss_bar()
 
 func _on_pickup_range_body_entered(body):
 	$Audio/GrabItem.play()
