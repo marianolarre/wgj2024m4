@@ -9,7 +9,7 @@ func _ready():
 	if LoopManager.loop == 5:
 		set_collision_layer_value(7, true)
 
-func hurt(dmg, knockback):
+func hurt(_dmg, _knockback):
 	hp -= 1
 	$DeathParticles.emitting = true
 	$AudioStreamPlayer2D.play()

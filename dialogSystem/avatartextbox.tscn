@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmdtp013qaejy"]
+
+[ext_resource type="PackedScene" uid="uid://bi0acvn8jdy5u" path="res://dialogSystem/textbox.tscn" id="1_wts5h"]
+[ext_resource type="Theme" uid="uid://btdf73ri82vel" path="res://themes/console.tres" id="2_7rlok"]
+[ext_resource type="FontFile" uid="uid://ikx3n3jg1l8b" path="res://themes/Consolas.ttf" id="3_q1djc"]
+
+[node name="Textbox" instance=ExtResource("1_wts5h")]
+theme = ExtResource("2_7rlok")
+
+[node name="NinePatchRect" parent="." index="0"]
+self_modulate = Color(0, 0, 0, 0.811765)
+
+[node name="Label" parent="MarginContainer" index="0"]
+theme = ExtResource("2_7rlok")
+theme_override_fonts/font = ExtResource("3_q1djc")
+
+[node name="NextIndicator" parent="MarginContainer/Label" index="0"]
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(0, 1, 0, 1)

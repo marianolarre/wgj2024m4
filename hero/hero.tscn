@@ -39,7 +39,7 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
+tracks/1/interp = 4
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
@@ -226,7 +226,6 @@ offset = Vector2(0, 63.0631)
 [node name="Sprite" type="Sprite2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(0, -2.07564)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_sty6s")
 offset = Vector2(0, -119.07)
@@ -422,7 +421,10 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange"]
 shape = SubResource("CircleShape2D_syl27")
 
+[node name="SmoothingTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="UI/PantallaAzul/BuggedSound" to="." method="_on_bugged_sound_timeout"]
 [connection signal="timeout" from="Death" to="." method="_on_death_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="PickupRange" to="." method="_on_pickup_range_body_entered"]
+[connection signal="timeout" from="SmoothingTimer" to="." method="_on_smoothing_timer_timeout"]

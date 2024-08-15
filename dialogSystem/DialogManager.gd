@@ -3,6 +3,7 @@ extends Node
 @onready var text_box_scene = preload("res://dialogSystem/textbox.tscn")
 @onready var console_box_scene = preload("res://dialogSystem/consolebox.tscn")
 @onready var npc_text_box_scene = preload("res://dialogSystem/npctextbox.tscn")
+@onready var avatar_text_box_scene = preload("res://dialogSystem/avatartextbox.tscn")
 
 var dialog_lines
 var current_line_index = 0
@@ -49,6 +50,9 @@ func _show_text_box():
 		elif speaker_name == "Heroe":
 			created_box = text_box_scene.instantiate()
 			text_box_position = hero.get_node("DialogPosition").global_position
+		elif speaker_name == "Avatar":
+			created_box = avatar_text_box_scene.instantiate()
+			text_box_position = speaker.get_node("DialogPosition").global_position
 		created_box.finished_displaying.connect(_on_text_box_finished_displaying)
 		get_tree().root.add_child(created_box)
 		created_box.global_position = text_box_position+Vector2(-16, -64) # Numeros magicos!

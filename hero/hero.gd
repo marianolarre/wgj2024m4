@@ -10,6 +10,7 @@ const SPEED = 450.0
 @onready var ui = %UI
 @onready var attack_timer = $AttackTimer
 @onready var camera_2d = $Camera2D
+@onready var smoothing_timer = $SmoothingTimer
 
 @onready var pisadas = $Audio/Pisadas
 @onready var audio_woosh = $Audio/AudioWhoosh
@@ -59,6 +60,9 @@ func _on_finished_dialog():
 
 
 func _physics_process(_delta):
+	if smoothing_timer.time_left > 0:
+		camera_2d.position_smoothing_speed = lerpf(50, 10, smoothing_timer.time_left)
+	
 	if current_screen_shake > 0:
 		current_screen_shake *= 0.8
 		current_screen_shake -= 0.01
@@ -200,3 +204,15 @@ func _on_pickup_range_body_entered(body):
 	$Audio/GrabItem.play()
 	body.queue_free()
 	got_wood.emit()
+
+func seamless_teleport(offset):
+	global_position += offset
+	camera_2d.reset_smoothing()
+
+
+func disable_smoothing():
+	smoothing_timer.start()
+
+
+func _on_smoothing_timer_timeout():
+	camera_2d.position_smoothing_enabled = false

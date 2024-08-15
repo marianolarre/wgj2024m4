@@ -3,11 +3,13 @@ class_name LoopContainer extends Node2D
 @export var loopNumber: int
 @export_enum("=", ">=", "<=", "!=", "()", ")(") var condition
 @export var loopNumberRange: int
-@onready var spawnpoint = $"Spawnpoint"
+var spawnpoint
 @export_multiline var startDialog: String
 @export var deathIsScripted: bool
 
 func _ready():
+	if (get_node_or_null("Spawnpoint")):
+		spawnpoint = $Spawnpoint
 	if condition == 0 and LoopManager.loop == loopNumber:
 		self.show()
 	elif condition == 1 and LoopManager.loop >= loopNumber:
